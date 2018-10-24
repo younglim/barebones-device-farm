@@ -14,11 +14,15 @@ A barebones android device farm for controlling android devices via the web.
 - Set up [hats-linux](https://github.com/younglim/hats-linux/blob/master/centos-7/INSTALL.md). 
 - Install `xpra` and `websokify` via `dnf`.
 
-### USB Client and Server
-- Install [VirtualHere Client](https://www.virtualhere.com/usb_client_software) by downloading their linux release. Note: Commercial software.
-- Copy `vhuit64` and `vhclientx86_64` to `/opt/scripts` .
-- Install and run [VirtualHere Server](https://virtualhere.com/content/usb-servers). Note: Commercial software. 
+### Set-up USB Server
+- On the same or separate machine, install and run [VirtualHere Server](https://virtualhere.com/content/usb-servers). Note: Commercial software. 
 - The server can be run on a separate machine as long as it resides on the same network as VirtualHere Client and the VirtualHere Server has TCP port 7575 or 17575 open.
+- Refer to VirtualHere Server documentation for more information on setting up USB Server.
+
+### Set-up USB Client
+- On the Fedora workstation, install [VirtualHere Client](https://www.virtualhere.com/usb_client_software) by downloading their linux release. Note: Commercial software.
+- Copy `vhuit64` and `vhclientx86_64` to `/opt/scripts` .
+- Within a Desktop Environment, run `/opt/scripts/runVhui.sh` . Choose the device(s) you want to attach to the USB Client.
 
 ### Live Control and View Android Device
 - Modify `/opt/scripts/restartLiveView.sh` with android device serial number where `MYANDROIDSERIALNUMBER` is your android serial number.
