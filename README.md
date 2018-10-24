@@ -12,7 +12,7 @@ A barebones android device farm for controlling android devices via the web.
 
 ### Additional dependencies
 - Set up [hats-linux](https://github.com/younglim/hats-linux/blob/master/centos-7/INSTALL.md). 
-- Install `xpra` and `websokify` via `dnf`.
+- Install `xpra` and `websokify` via dnf `sudo dnf install xpra python2-websockify -y`.
 
 ### Set-up USB Server
 - On the same or separate machine, install and run [VirtualHere Server](https://virtualhere.com/content/usb-servers). Note: Commercial software. 
