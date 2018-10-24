@@ -5,7 +5,8 @@ A barebones android device farm for controlling android devices via the web.
 - A Fedora 28 workstation.
 - Set up [hats-linux](https://github.com/younglim/hats-linux/blob/master/centos-7/INSTALL.md). 
 - hats user with sudo (root without password) access.
-- Connect one or more android device locally with USB debugging enabled
+- [VirtualHere USB Client and Server](https://virtualhere.com/VirtualHere). Note Commercial software.
+- Connect one or more android device to USB Server with USB debugging enabled.
 
 ## Set-up
 - Clone this repo to `/opt/scripts`.
