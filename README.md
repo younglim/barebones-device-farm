@@ -13,11 +13,16 @@ A barebones android device farm for controlling android devices via the web.
 - Copy `vhuit64` and `vhclientx86_64` to `/opt/scripts` .
 - Install and run [VirtualHere Server](https://virtualhere.com/content/usb-servers). Note: Commercial software. 
 - The server can be run on a separate machine as long as it resides on the same network as VirtualHere Client and the VirtualHere Server has TCP port 7575 or 17575 open.
-- Clone this repo to `/opt/scripts`..
+- Clone this repo to `/opt/scripts`.
 - Modify `/opt/scripts/restartLiveView.sh` with android device serial number.
 - Copy service script `/opt/scripts/device-farm.service` to `/etc/systemd/system`.
 - Run `sudo systemctl daemon-reload`.
 - Enable the service `sudo systemctl enable device-farm.service`.
 - Start the service: `sudo systemctl start device-farm.service`.
 - Allow service to start on boot by running the following as root `if [ -f /etc/systemd/system/*.wants/device-farm.service ]; then echo "On"; else echo "Off"; fi
+
+## Run
+- Check service is running `sudo systemctl status device-farm.service`.
+- Browse your android device `http://localhost:14500`.
+- Set up your own CI tool such as [GoCD](https://www.gocd.org) or [Bamboo](https://www.atlassian.com/software/bamboo) and run appium / robot framework tests.
 `
