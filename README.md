@@ -12,7 +12,9 @@ A barebones android device farm for controlling android devices via the web.
 
 ### Additional dependencies
 - Set up [hats-linux](https://github.com/younglim/hats-linux/blob/master/centos-7/INSTALL.md). 
+- Ensure environment variables to `linuxbrew`, `npm` (for appium) and `android-sdk` are properly configured in `/home/hats/.bashrc`.
 - Install `xpra` and `websokify` via dnf `sudo dnf install xpra python2-websockify -y`.
+- Install `scrcpy` via linuxbrew `brew install scrcpy`.
 
 ### Set-up USB Server
 - On the same or separate machine, install and run [VirtualHere Server](https://virtualhere.com/content/usb-servers). Note: Commercial software. 
