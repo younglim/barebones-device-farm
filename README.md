@@ -5,42 +5,42 @@ A barebones android device farm for controlling android devices via a web browse
 
 ![Screenshot of multiple devices displayed on web brpwser](https://raw.githubusercontent.com/younglim/barebones-device-farm/master/device-farm-screenshot.png)
 
-## Requirements
-- A Fedora 28 workstation.
-- Set up [hats-linux](https://github.com/younglim/hats-linux/blob/master/centos-7/INSTALL.md). 
-- hats user with sudo (root without password) access.
-- [VirtualHere USB Client and Server](https://virtualhere.com/VirtualHere). Note Commercial software.
-- Connect one or more android device to USB Server with USB debugging enabled.
+## Setting up
 
-## Set-up
-- Clone this repo to `/opt/scripts`.
-
-### Additional dependencies
+### Pre-requisites
+- A [Fedora 28 Workstation](https://getfedora.org/en/workstation/download).
+- hats user with sudo ([root without password](https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-centos-quickstart)) access.
 - Set up [hats-linux](https://github.com/younglim/hats-linux/blob/master/centos-7/INSTALL.md). 
 - Ensure environment variables to `linuxbrew`, `npm` (for appium) and `android-sdk` are properly configured in `/home/hats/.bashrc`.
-- Install `xpra` and `websokify` via dnf `sudo dnf install xpra python2-websockify -y`.
-- Install `scrcpy` via linuxbrew `brew install scrcpy`.
 
 ### Set-up USB Server
-- On the same or separate machine, install and run [VirtualHere Server](https://virtualhere.com/content/usb-servers). Note: Commercial software. 
-- The server can be run on a separate machine as long as it resides on the same network as VirtualHere Client and the VirtualHere Server has TCP port 7575 or 17575 open.
+- Go to [VirtualHere Server](https://virtualhere.com/content/usb-servers) and download VirtualHere Server. 
+- You can run VirtualHere Server on a separate machine. This machine will act as the USB Server
+- A VirtualHere license is required to connect more than 1 android device.
+- Ensure VirtualHere USB Server process / service is running.
 - Refer to VirtualHere Server documentation for more information on setting up USB Server.
 
 ### Set-up USB Client
 - On the Fedora workstation, install [VirtualHere Client](https://www.virtualhere.com/usb_client_software) by downloading their linux release. Note: Commercial software.
 - Copy `vhuit64` and `vhclientx86_64` to `/opt/scripts` .
-- Within a Desktop Environment, run `/opt/scripts/runVhui.sh` . Choose the device(s) you want to attach to the USB Client.
+- Ensure the USB Client can access the USB Server running VirtualHere Server. TCP port 7575 or 17575 must be open.
+- Within a Desktop Environment, run `/opt/scripts/runVhui.sh` . Choose the USB Server and device(s) you want to attach to the USB Client.
 
-### Live Control and View Android Device
+### Set-up barebones-device-farm
+- Clone or download this repo and copy it's contents to `/opt/scripts`.
+- Install `xpra` and `websokify` by using `sudo dnf install xpra python2-websockify -y`.
+- Install `scrcpy` via linuxbrew by using `brew install scrcpy`.
 - Modify `/opt/scripts/restartLiveView.sh` with android device serial number where `MYANDROIDSERIALNUMBER` is your android serial number.
 - Copy service script `/opt/scripts/device-farm.service` to `/etc/systemd/system`.
 - Run `sudo systemctl daemon-reload`.
 - Enable the service `sudo systemctl enable device-farm.service`.
-- Start the service: `sudo systemctl start device-farm.service`.
 - Allow service to start on boot by running the following as root `if [ -f /etc/systemd/system/*.wants/device-farm.service ]; then echo "On"; else echo "Off"; fi`
 
 ## Run
+- Start the service by using `sudo systemctl start device-farm.service`.
 - Check service is running `sudo systemctl status device-farm.service`.
-- Browse your android device `http://localhost:14500`.
+- Browse and control your android device `http://localhost:14500`.
+
+## Other Usage
 - Set up your own CI tool such as [GoCD](https://www.gocd.org) or [Bamboo](https://www.atlassian.com/software/bamboo) and run appium / robot framework tests.
-`
+- Check the [xpra.org](https://www.xpra.org) website for more information on usage scenarios and configuring display client.
