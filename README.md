@@ -1,5 +1,9 @@
 # barebones-device-farm
-A barebones android device farm for controlling android devices via the web.
+A barebones android device farm for controlling android devices via a web browser.
+
+## Screenshot
+
+![Screenshot of multiple devices displayed on web brpwser](https://raw.githubusercontent.com/younglim/barebones-device-farm/master/device-farm-screenshot.png)
 
 ## Requirements
 - A Fedora 28 workstation.
