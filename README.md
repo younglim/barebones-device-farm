@@ -21,13 +21,13 @@ A barebones android device farm for controlling android devices via a web browse
 - Refer to VirtualHere Server documentation for more information on setting up USB Server.
 
 ### Set-up USB Client
+- Clone or download this repo and copy it's contents to `/opt/scripts`.
 - On the Fedora workstation, install [VirtualHere Client](https://www.virtualhere.com/usb_client_software) by downloading their linux release. Note: Commercial software.
 - Copy `vhuit64` and `vhclientx86_64` to `/opt/scripts` .
 - Ensure the USB Client can access the USB Server running VirtualHere Server. TCP port 7575 or 17575 must be open.
 - Within a Desktop Environment, run `/opt/scripts/runVhui.sh` . Choose the USB Server and device(s) you want to attach to the USB Client.
 
 ### Set-up barebones-device-farm
-- Clone or download this repo and copy it's contents to `/opt/scripts`.
 - Install `xpra` and `websokify` by using `sudo dnf install xpra python2-websockify -y`.
 - Install `scrcpy` via linuxbrew by using `brew install scrcpy`.
 - Modify `/opt/scripts/restartLiveView.sh` with android device serial number where `MYANDROIDSERIALNUMBER` is your android serial number.
