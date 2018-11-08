@@ -9,6 +9,7 @@ A barebones android device farm for controlling android devices via a web browse
 
 ### Pre-requisites
 - A [Fedora 28 Workstation](https://getfedora.org/en/workstation/download).
+- Install `kernel-modules-extra` via `sudo dnf install kernel-modules-extra -y` .
 - hats user with sudo ([root without password](https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-centos-quickstart)) access.
 - Set up [hats-linux](https://github.com/younglim/hats-linux/blob/master/centos-7/INSTALL.md). 
 - Ensure environment variables to `linuxbrew`, `npm` (for appium) and `android-sdk` are properly configured in `/home/hats/.bashrc`.
