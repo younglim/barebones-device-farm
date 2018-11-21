@@ -29,8 +29,24 @@ A barebones android device farm for controlling android devices via a web browse
 - Within a Desktop Environment, run `/opt/scripts/runVhui.sh` . Choose the USB Server and device(s) you want to attach to the USB Client.
 
 ### Set-up barebones-device-farm
-- Install `xpra` and `websokify` by using `sudo dnf install xpra python2-websockify -y`.
-- Install `scrcpy` via linuxbrew by using `brew install scrcpy`.
+- Install `xpra` and `websokify` by using `sudo dnf install xpra python2-websockify -y` (Fedora) or `sudo apt install xpra python-websockify -y` (Ubuntu).
+- Additionally, for Ubuntu, apply the following fixes:
+  ```
+  echo "allowed_users=anybody" | sudo tee --append /etc/X11/Xwrapper.config
+  wget https://raw.githubusercontent.com/younglim/hats-linux/master/binaries/usr-share-xpra-www.zip
+  sudo unzip usr-share-xpra-www.zip -d /usr/share/xpra/
+  ```
+
+- Install `scrcpy` via:
+  Fedora: linuxbrew by using `brew install scrcpy`
+  Ubuntu:
+  ```
+  wget https://raw.githubusercontent.com/younglim/hats-linux/master/binaries/scrcpy.zip
+  sudo unzip scrcpy.zip -d /usr/local/share
+  echo "export PATH=$PATH:/usr/local/share/scrcpy" >> ~/.bashrc
+   ```
+   
+
 - Modify `/opt/scripts/restartLiveView.sh` with android device serial number where `MYANDROIDSERIALNUMBER` is your android serial number.
 - Copy service script `/opt/scripts/device-farm.service` to `/etc/systemd/system`.
 - Run `sudo systemctl daemon-reload`.
