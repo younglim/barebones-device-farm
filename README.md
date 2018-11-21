@@ -37,9 +37,9 @@ A barebones android device farm for controlling android devices via a web browse
   sudo unzip usr-share-xpra-www.zip -d /usr/share/xpra/
   ```
 
-- Install `scrcpy` via:
-  Fedora: linuxbrew by using `brew install scrcpy`
-  Ubuntu:
+- For Fedora, install `scrcpy` via linuxbrew by using `brew install scrcpy`.
+
+- For Ubuntu,
   ```
   wget https://raw.githubusercontent.com/younglim/hats-linux/master/binaries/scrcpy.zip
   sudo unzip scrcpy.zip -d /usr/local/share
