@@ -44,6 +44,7 @@ A barebones android device farm for controlling android devices via a web browse
   wget https://raw.githubusercontent.com/younglim/hats-linux/master/binaries/scrcpy.zip
   sudo unzip scrcpy.zip -d /usr/local/share
   echo "export PATH=$PATH:/usr/local/share/scrcpy" >> ~/.bashrc
+  source ~/.bashrc
    ```
    
 
