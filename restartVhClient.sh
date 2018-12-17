@@ -1,10 +1,8 @@
 #!/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
-sudo pkill vhclientx86_64
-sleep 5
+sudo pkill -9 vhclientx86_64
+wait $(pgrep vhclientx86_64)
 
-sudo $DIR/vhclientx86_64 -c $DIR/.vhui -n
-sleep 15
-
-adb devices -l
+echo "" > $DIR/vhserver.log
+sudo $DIR/vhclientx86_64 -c $DIR/.vhui -n -l $DIR/vhserver.log
