@@ -44,12 +44,16 @@ echo "Number of devices connected: $DEVICESCOUNT"
 
 
 echo "Start Live View Sessions"
+
+DISPLAYOPTS="--speaker=disabled --microphone=disabled --window-close=disconnect --dbus-proxy=no --dbus-control=no --desktop-scaling=off --pixel-depth=16 --encoding=h264 --video-scaling=0.1"
+SCROPTS="--bit-rate 1M --max-size 720"
+
 # Mi 3
-xpra start --bind-tcp=0.0.0.0:14500 --html=on --start="scrcpy -s MYSERIALNUMBER -m 768" $DISPLAYOPTS --daemon=no :100 &
+xpra start --bind-tcp=0.0.0.0:14500 --html=on --start="scrcpy -s MYSERIALNUMBER $SCROPTS" $DISPLAYOPTS --daemon=no :100 &
 sleep $SLEEP
 
 # Mi A1
-xpra start --bind-tcp=0.0.0.0:14501 --html=on --start="scrcpy -s MYSERIALNUMBER2 -m 768" $DISPLAYOPTS --daemon=no :101 &
+xpra start --bind-tcp=0.0.0.0:14501 --html=on --start="scrcpy -s MYSERIALNUMBER2 $SCROPTS" $DISPLAYOPTS --daemon=no :101 &
 sleep $SLEEP
 
 
