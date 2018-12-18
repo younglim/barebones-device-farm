@@ -22,14 +22,26 @@ DEVICESCOUNT=$(expr $(adb devices | tee >(wc -l) | tail -1) - 2)
 
 while [ $DEVICESCOUNT -le 0 ]
 do
+
+	VHCLIENTERROR="$($DIR/vhclientx86_64 -t LIST | awk /'No response from IPC server'/)"
+	while [ ! -z $VHCLIENTERROR ]
+        do
+        	echo "Error with VirtualHere Client... restarting"
+        	$DIR/restartVhClient.sh
+        	VHCLIENTERROR="$($DIR/vhclientx86_64 -t LIST | awk /'No response from IPC server'/)"
+		sleep $SLEEP
+	done
+
 	echo "Retry - Number of devices connected: $DEVICESCOUNT"
 	adb kill-server
 	sleep $SLEEP
 	adb start-server
 	DEVICESCOUNT=$(expr $(adb devices | tee >(wc -l) | tail -1) - 2)
+
 done
 
 echo "Number of devices connected: $DEVICESCOUNT"
+
 
 echo "Start Live View Sessions"
 # Mi 3
