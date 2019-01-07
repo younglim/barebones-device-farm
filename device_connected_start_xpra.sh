@@ -16,5 +16,7 @@ do
 done
 
 if $device_is_connected ; then
-	xpra start --bind-tcp=0.0.0.0:$2 --html=on --start="scrcpy -s $1 $SCROPTS" $DISPLAYOPTS --daemon=no :$3
+	export DISPLAY=":$3"
+	xpra start --bind-tcp=0.0.0.0:$2 --html=on --start="scrcpy --serial $1 $SCROPTS" $DISPLAYOPTS --daemon=no $DISPLAY &
+	sleep $SLEEP
 fi
