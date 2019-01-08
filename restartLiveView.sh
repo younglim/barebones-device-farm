@@ -44,11 +44,4 @@ echo "Number of devices connected: $DEVICESCOUNT"
 
 
 echo "Start Live View Sessions"
-#renice 19 -p $$
-adb devices -l > /tmp/device_list.txt
-
-# Galaxy S4
-$DIR/device_connected_start_xpra.sh XXXXXXXX 14500 100 
-
-# Mi 3
-$DIR/device_connected_start_xpra.sh YYYYYYYY 14501 101 
+$DIR/update_connection.sh
