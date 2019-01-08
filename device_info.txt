@@ -1,0 +1,10 @@
+Samsung|Galaxy_S4|5907e398|14500|100|false
+Xiaomi|Mi_3|10bf250|14501|101|false
+Samsung|Galaxy_S6|03157df3e2c1d116|14502|102|false
+ASUS|ZenPad_8.0|G7NPCX030629FR7|14503|103|false
+OnePlus|2|1803fec5|14504|104|false
+HTC|Desire_10_Pro|LC6CE1004574|14505|105|false
+Samsung|J7_Pro|5200f959fa9db499|14506|106|false
+Xiaomi|Mi_A1|0acbd31c0704|14507|107|false
+Samsung|Tab_A|5711c6a0|14508|108|false
+Sony|Xperia_XA2|CQ3000QC8P|14509|109|false
