@@ -48,7 +48,27 @@ A barebones android device farm for controlling android devices via a web browse
    ```
    
 
-- Modify `/opt/scripts/restartLiveView.sh` with android device serial number where `MYANDROIDSERIALNUMBER` is your android serial number.
+## Maintain devices_info.txt
+
+Maintain a text file containing information of the android devices in the device farm, namely 
+
+- Brand name e.g. Samsung
+- Model name e.g. Galaxy_S6
+- UDID, which is an alphanumeric string 
+- XPRA port number e.g. 14500
+- XPRA display number e.g. 100
+- Initial connection status which is always set to false
+
+Fields should not contain space character, should be specified in this exact order and should be delineated by '|'. A separate device should be specified in a new line. 
+
+Example of a devices_info.txt:
+
+> Samsung|Galaxy_S4|5907e398|14500|100|false
+> Xiaomi|Mi_3|10bf250|14501|101|false
+> Samsung|Galaxy_S6|03157df3e2c1d116|14502|102|false
+
+
+## Set up auto-start service script
 - Copy service script `/opt/scripts/device-farm.service` to `/etc/systemd/system`.
 - Run `sudo systemctl daemon-reload`.
 - Enable the service `sudo systemctl enable device-farm.service`.
