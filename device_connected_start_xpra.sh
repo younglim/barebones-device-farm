@@ -1,6 +1,6 @@
 #!/bin/bash
 SLEEP=10
-DISPLAYOPTS="--dpi=96 --speaker=disabled --microphone=disabled --window-close=disconnect --dbus-proxy=no --dbus-control=no --desktop-scaling=off --encoding=h264 --video-scaling=0.1"
+DISPLAYOPTS="--dpi=96 --speaker=disabled --microphone=disabled --window-close=disconnect --dbus-proxy=no --dbus-control=no --compressors=lz4 --desktop-scaling=off --encoding=rgb --video-scaling=0.1"
 SCROPTS="--bit-rate 1M --max-size 500 --fullscreen"
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
