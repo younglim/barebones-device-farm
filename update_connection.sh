@@ -4,6 +4,8 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 column -t -s "|" $DIR/device_info.txt > /tmp/table.txt
 
+SCRCPY_COUNT_LAST=0
+
 while true
 do
 
@@ -55,6 +57,31 @@ do
 		fi
 
 	done < /tmp/table.txt
+	
+	SCRCPY_COUNT="$(sudo systemctl status device-farm | grep ' scrcpy' | wc -l)"
 
-	sleep 10
+        echo "bef SCRCPY_COUNT: $SCRCPY_COUNT"
+        echo "bef SCRCPY_COUNT_LAST: $SCRCPY_COUNT_LAST"
+
+        if [ "$SCRCPY_COUNT" -ge "$SCRCPY_COUNT_LAST" ];
+        then
+                echo "greater equal"
+                SCRCPY_COUNT_LAST=$SCRCPY_COUNT
+		echo "aft SCRCPY_COUNT_LAST: $SCRCPY_COUNT_LAST"
+		echo "aft SCRCPY_COUNT: $SCRCPY_COUNT"
+        elif [ "$SCRCPY_COUNT" -lt "$SCRCPY_COUNT_LAST" ];
+        then
+                echo "less than"
+		echo "SCRCPY_COUNT_LAST: $SCRCPY_COUNT_LAST"
+                echo "SCRCPY_COUNT: $SCRCPY_COUNT"
+                echo "Restarting Device Farm as some scrcpy session is dead"
+                sudo pkill -9 scrcpy
+                wait $(pgrep scrcpy)
+                sudo pkill -9 adb
+		wait $(pgrep adb)
+                sudo systemctl restart device-farm
+        fi
+
+        sleep 30
+	
 done
