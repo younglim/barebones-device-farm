@@ -1,0 +1,518 @@
+
+<!DOCTYPE html>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="0" />
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<style>
+.overlay {
+  pointer-events: none;
+}
+
+.mt-0 {
+  margin-top: 0 !important;
+}
+
+.ml-1 {
+  margin-left: ($spacer * .25) !important;
+}
+
+.px-2 {
+  padding-left: ($spacer * .5) !important;
+  padding-right: ($spacer * .5) !important;
+}
+
+.p-3 {
+  padding: $spacer !important;
+}
+
+h2 {
+  margin: 25px;
+}
+
+.btn {
+    padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.btn {
+  display: inline-block;
+  padding: 6px 12px ;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 10px 16px;
+}
+
+.btn-sm {
+  font-size: 16px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #428bca;
+  border-color: #357ebd;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #fff;
+  background-color: #3276b1;
+  border-color: #285e8e;
+}
+
+    /***********************
+      OUTLINE BUTTONS
+      ************************/
+
+      .btn.outline {
+        background: none;
+        padding: 12px 22px;
+    }
+    .btn-primary.outline {
+        border: 2px solid #0099cc;
+        color: #0099cc;
+    }
+    .btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
+        color: #33a6cc;
+        border-color: #33a6cc;
+    }
+    .btn-primary.outline:active, .btn-primary.outline.active {
+        border-color: #007299;
+        color: #007299;
+        box-shadow: none;
+    }
+
+    /***********************
+      CUSTON BTN VALUES
+      ************************/
+
+      .btn {
+        padding: 14px 24px;
+        border: 0 none;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+    .btn:focus, .btn:active:focus, .btn.active:focus {
+        outline: 0 none;
+    }
+
+    .btn-primary.gradient {
+        background: -moz-linear-gradient(top,  #33a6cc 50%, #0099cc 50%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#33a6cc), color-stop(50%,#0099cc)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #33a6cc 50%,#0099cc 50%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #33a6cc 50%,#0099cc 50%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #33a6cc 50%,#0099cc 50%); /* IE10+ */
+        background: linear-gradient(to bottom,  #33a6cc 50%,#0099cc 50%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33a6cc', endColorstr='#0099cc',GradientType=0 ); /* IE6-9 */
+    }
+
+    .btn-primary.gradient:hover, .btn-primary.gradient:focus, .btn-primary.gradient:active, .btn-primary.gradient.active, .open > .dropdown-toggle.btn-primary {
+        background: -moz-linear-gradient(top,  #66b2cc 50%, #33a6cc 50%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#66b2cc), color-stop(50%,#33a6cc)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #66b2cc 50%,#33a6cc 50%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #66b2cc 50%,#33a6cc 50%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #66b2cc 50%,#33a6cc 50%); /* IE10+ */
+        background: linear-gradient(to bottom,  #66b2cc 50%,#33a6cc 50%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#66b2cc', endColorstr='#33a6cc',GradientType=0 ); /* IE6-9 */
+    }
+
+    .btn-primary.gradient:active, .btn-primary.gradient.active {
+        background: -moz-linear-gradient(top,  #267c99 50%, #007299 50%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(50%,#267c99), color-stop(50%,#007299)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top,  #267c99 50%,#007299 50%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top,  #267c99 50%,#007299 50%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top,  #267c99 50%,#007299 50%); /* IE10+ */
+        background: linear-gradient(to bottom,  #267c99 50%,#007299 50%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#267c99', endColorstr='#007299',GradientType=0 ); /* IE6-9 */
+    }
+
+    .deviceEmbed {
+    }
+
+    .deviceEmbed:hover {
+        z-index: 10;
+    }
+
+
+</style>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
+    <script type="text/javascript">
+
+
+        function updateSelected(buttons, hideButtons, table) {
+            for (let i = 0; i < buttons.length; i++) {
+
+                buttons[i].onclick = function() {
+
+                   var deviceObjectId = "deviceObj" + i;
+                   var deviceEmbedId = "deviceEmbed" + i;
+                   var deviceUrlKey = "device" + i + "url";
+                   var hidebtnId = "hidebutton" + i;
+                   var msgId = "msg" + i;
+                   
+                   var deviceObject = document.getElementById(deviceObjectId); 
+                   var deviceEmbed = document.getElementById(deviceEmbedId);
+
+                // get url from table
+                var url = "/" + table[i][3] + "/"
+                
+                function checkConnection(url) {
+
+                    prevent_caching = (new Date()).getTime();
+
+                    $.ajax({
+                        url: url,
+                        type: "get",
+                        cache: false,
+                            dataType: 'jsonp', // it is for supporting crossdomain
+                            crossDomain : true,
+                            asynchronous : false,
+                            data: {
+                                uniq_val: prevent_caching,
+                                method_name: "get_all_tasks",
+                                format: 'jsonp'
+                            },
+                            timeout : 1500, // set a timeout in milliseconds
+                            complete : function(xhr, responseText, thrownError) {
+                                if(xhr.status == "200") {
+                                 isAccessible = true;
+                                    // update url for object
+                                    deviceObject.setAttribute("data", url);
+                                    deviceObject.outerHTML = deviceObject.outerHTML.replace(/data="(.+?)"/, 'data="' + url + '"');
+
+                                    // show hide button
+                                    $("#" + hidebtnId).removeClass("d-none");
+
+                                    // set width height of object
+                                    $("#" + deviceObjectId).css("width", 602);
+                                    $("#" + deviceObjectId).css("left", -180);
+                                    $("#" + deviceObjectId).css("height", 500);
+                                    $("#" + deviceObjectId).css("position", "relative");
+                                    
+                                    // loader
+                                    setTimeout(function(){
+                                        // $("#" + loadId).addClass("d-none");
+                                        // $("#" + loadId).removeClass("d-block");
+                                        $("#" +deviceObjectId).css("width", 601);
+                                    },3000);
+
+                                    
+
+                                    if (i%3==1) {
+                                        $("#" + deviceObjectId).css("left", -120);
+                                        
+                                    }
+
+                                    if (i%3==2) {
+                                        $("#" + deviceObjectId).css("left", -60);
+                                        
+                                    }
+                                    
+                                   //success(); // yes response came, execute success()
+                               }
+                               else {
+                                 isAccessible = false;
+                                   //failure(); // this will be executed after the request gets timed out due to blockage of ports/connections/IPs
+
+                                   $("#" + deviceObjectId).addClass("d-none");
+
+                                   
+                                   $("#" + msgId).removeClass("d-none");
+                                   $("#" + msgId).addClass("d-block");
+                               }
+                           }
+                       });
+                }
+                
+                checkConnection(url);
+            };
+
+            hideButtons[i].onclick = function() {
+                var deviceObjectId = "deviceObj" + i;
+                var deviceEmbedId = "deviceEmbed" + i;
+                var deviceUrlKey = "device" + i + "url";
+                var hidebtnId = "hidebutton" + i;
+                
+                var deviceObject = document.getElementById(deviceObjectId); 
+                var deviceEmbed = document.getElementById(deviceEmbedId);
+
+                deviceObject.removeAttribute("data");
+                deviceEmbed.removeAttribute("src");
+
+                // hide hide button
+                $("#" + hidebtnId).removeClass("d-block");
+                $("#" + hidebtnId).addClass("d-none");
+            }
+        }
+    }
+
+    function loadTable(webTableUrl, table, buttons, hideButtons) {
+        $.ajax({
+            url: webTableUrl,
+            type: 'GET',
+            accepts: 'text/html',
+            success: function(data){ 
+                console.log('aaaaa');
+
+                // split into lines, each line is a device
+                var lines = data.split("\n");
+
+                // define table as (2D) array 
+                table = new Array(lines.length - 1);
+
+                // for all devices
+                for (var i = 0; i < lines.length - 1; i++) {
+                    // for each line, split by spaces into fields
+                    // may include multiple space characters
+                    var fields = lines[i].split(" ");
+                    // num of fields hard coded as 6
+                    var numFields = 6;
+                    table[i] = new Array();
+                    
+                    // fill the device info for one device
+                    for (var j = 0; j < fields.length; j++) {
+                        if (fields[j] != "" && fields[j] != null) {
+                            table[i].push(fields[j]);
+                        }
+                    }
+                }
+
+                loadInfoHtml(table);
+                updateSelected(buttons, hideButtons, table);
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
+    }
+
+    function loadInfoHtml(table) {
+        console.log(table.length);
+        for (var i = 0; i < table.length; i++) {
+            document.getElementById("button" + i).innerHTML 
+            = table[i][0] + " " + table[i][1];
+        }
+    }
+
+    $(document).ready(function(){
+
+        var buttons = document.getElementsByClassName("btn-device");
+        var hideButtons = document.getElementsByClassName("hidebtn");
+        
+        var table;
+        loadTable("table.txt", table, buttons, hideButtons);
+        
+        $('[data-toggle="popover"]').popover()
+
+    });
+
+    
+</script>
+
+<nav class="navbar navbar-light sticky-top" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="#">
+        <img src="logo.jpg" width="35" height="35" alt="">
+    </a>
+    <span class="navbar-brand mb-0 h1">HATS</span>
+    <button id="uidebugger" type="button" class="btn btn-sm btn-warning" onclick='window.open("/13000/", "UIAutomator2", "width=1024,height=600");'>UI Debugger</button>
+
+    <button id="help" type="button" class="btn btn-sm btn-danger" data-toggle="popover" title="Device Controls" data-html="true" data-content="To wake screen or simulate tapping on the back button, right-click on the screen. <br/>To simulate tapping on the home button, middle-click on the screen or tap with three finger (on Mac).">Help</button>
+
+    
+</nav>
+
+<center>
+  <h2>Click to display devices</h2>
+  <p>Monitor automated tests on multiple devices concurrently</p>
+</center>
+
+<br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4">
+        <button class="btn btn-primary btn-sm gradient btn-device" name="button" id="button0"></button>
+        <button class="hidebtn btn-sm outline d-none" name="hidebutton" id="hidebutton0">Hide</button>
+        <br>
+        <p class="d-none" id="msg0">Device unreachable</p>
+        <br>
+        <!-- <div class="spinner-border text-info d-none" id="load0" role="status">
+            <span class="sr-only">Loading...</span>
+        </div> -->
+        <object class='deviceObj' id='deviceObj0'>
+            <object class='deviceEmbed' id='deviceEmbed0'></object>
+        </object>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-4">
+        <button class="btn btn-primary btn-sm gradient btn-device" name="button" id="button1"></button>
+        <button class="hidebtn btn-sm outline d-none" name="hidebutton" id="hidebutton1">Hide</button>
+        <br>
+        <p class="d-none" id="msg1">Device unreachable</p>
+        <br>
+        <!-- <div class="spinner-border text-info d-none" id="load1" role="status">
+            <span class="sr-only">Loading...</span>
+        </div> -->
+        <object class='deviceObj' id='deviceObj1'>
+            <object class='deviceEmbed' id='deviceEmbed1'></object>
+        </object>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-4">
+        <button class="btn btn-primary btn-sm gradient btn-device" name="button" id="button2"></button>
+        <button class="hidebtn btn-sm outline d-none" name="hidebutton" id="hidebutton2">Hide</button>
+        <br>
+        <p class="d-none" id="msg2">Device unreachable</p>
+        <br>
+        <!-- <div class="spinner-border text-info d-none" id="load2" role="status">
+            <span class="sr-only">Loading...</span>
+        </div> -->
+        <object class='deviceObj' id='deviceObj2'>
+            <object class='deviceEmbed' id='deviceEmbed2'></object>
+        </object>
+    </div>
+</div>
+
+<br>
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4">
+        <button class="btn btn-primary btn-sm gradient btn-device" name="button" id="button3"></button>
+        <button class="hidebtn btn-sm outline d-none" name="hidebutton" id="hidebutton3">Hide</button>
+        <br>
+        <p class="d-none" id="msg3">Device unreachable</p>
+        <br>
+        <!-- <div class="spinner-border text-info d-none" id="load3" role="status">
+            <span class="sr-only">Loading...</span>
+        </div> -->
+        <object class='deviceObj' id='deviceObj3'>
+            <object class='deviceEmbed' id='deviceEmbed3'></object>
+        </object>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-4">
+        <button class="btn btn-primary btn-sm gradient btn-device" name="button" id="button4"></button>
+        <button class="hidebtn btn-sm outline d-none" name="hidebutton" id="hidebutton4">Hide</button>
+        <br>
+        <p class="d-none" id="msg4">Device unreachable</p>
+        <br>
+        <!-- <div class="spinner-border text-info d-none" id="load4" role="status">
+            <span class="sr-only">Loading...</span>
+        </div> -->
+        <object class='deviceObj' id='deviceObj4'>
+            <object class='deviceEmbed' id='deviceEmbed4'></object>
+        </object>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-4">
+        <button class="btn btn-primary btn-sm gradient btn-device" name="button" id="button5"></button>
+        <button class="hidebtn btn-sm outline d-none" name="hidebutton" id="hidebutton5">Hide</button>
+        <br>
+        <p class="d-none" id="msg5">Device unreachable</p>
+        <br>
+        <!-- <div class="spinner-border text-info d-none" id="load5" role="status">
+            <span class="sr-only">Loading...</span>
+        </div> -->
+        <object class='deviceObj' id='deviceObj5'>
+            <object class='deviceEmbed' id='deviceEmbed5'></object>
+        </object>
+    </div>
+</div>
+
+<br>
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4">
+        <button class="btn btn-primary btn-sm gradient btn-device" name="button" id="button6"></button>
+        <button class="hidebtn btn-sm outline d-none" name="hidebutton" id="hidebutton6">Hide</button>
+        <br>
+        <p class="d-none" id="msg6">Device unreachable</p>
+        <br>
+        <!-- <div class="spinner-border text-info d-none" id="load6" role="status">
+            <span class="sr-only">Loading...</span>
+        </div> -->
+        <object class='deviceObj' id='deviceObj6'>
+            <object class='deviceEmbed' id='deviceEmbed6'></object>
+        </object>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-4">
+        <button class="btn btn-primary btn-sm gradient btn-device" name="button" id="button7"></button>
+        <button class="hidebtn btn-sm outline d-none" name="hidebutton" id="hidebutton7">Hide</button>
+        <br>
+        <p class="d-none" id="msg7">Device unreachable</p>
+        <br>
+        <!-- <div class="spinner-border text-info d-none" id="load7" role="status">
+            <span class="sr-only">Loading...</span>
+        </div> -->
+        <object class='deviceObj' id='deviceObj7'>
+            <object class='deviceEmbed' id='deviceEmbed7'></object>
+        </object>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-4">
+        <button class="btn btn-primary btn-sm gradient btn-device" name="button" id="button8"></button>
+        <button class="hidebtn btn-sm outline d-none" name="hidebutton" id="hidebutton8">Hide</button>
+        <br>
+        <p class="d-none" id="msg8">Device unreachable</p>
+        <br>
+        <!-- div class="spinner-border text-info d-none" id="load8" role="status">
+            <span class="sr-only">Loading...</span>
+        </div> -->
+        <object class='deviceObj' id='deviceObj8'>
+            <object class='deviceEmbed' id='deviceEmbed8'></object>
+        </object>
+    </div>
+</div>
+
+<br>
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 col-4">
+        <button class="btn btn-primary btn-sm gradient btn-device" name="button" id="button9"></button>
+        <button class="hidebtn btn-sm outline d-none" name="hidebutton" id="hidebutton9">Hide</button>
+        <br>
+        <p class="d-none" id="msg9">Device unreachable</p>
+        <br>
+        <!-- <div class="spinner-border text-info d-none" id="load9" role="status">
+            <span class="sr-only">Loading...</span>
+        </div> -->
+        <object class='deviceObj' id='deviceObj9'>
+            <object class='deviceEmbed' id='deviceEmbed9'></object>
+        </object>
+    </div>
+</div>
+</div>
+
+<br>
+
+</body>
+</html>
