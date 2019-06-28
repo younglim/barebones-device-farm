@@ -1,0 +1,41 @@
+---
+- name: Install zip
+  become: yes
+  apt:
+    pkg: zip
+    state: present
+
+- name: Capture whoami output to be used later
+  command: whoami
+  register: username
+
+- name: Remove directory for barebores-device-farm
+  become: yes
+  file:
+    path: /opt/barebones-device-farm
+    state: absent
+
+- name: Create directory for barebores-device-farm
+  become: yes
+  file:
+    path: /opt/barebones-device-farm
+    owner: "{{ username.stdout_lines[0] }}"
+    state: directory
+
+- name: Clone barebones-device-farm
+  become: yes
+  git:
+    repo: https://github.com/younglim/barebones-device-farm.git
+    dest: /opt/barebones-device-farm
+
+- name: Create device-farm symlink with systemd
+  become: yes
+  file:
+    src: /opt/barebones-device-farm/device-farm.service
+    dest: /etc/systemd/system/device-farm.service
+    state: link
+
+# https://superuser.com/questions/1024677/ansible-how-to-recursively-set-directory-and-file-permissions
+- name: Make barebones-device-farm scripts executable
+  become: yes
+  shell: chmod +x /opt/barebones-device-farm/*.sh

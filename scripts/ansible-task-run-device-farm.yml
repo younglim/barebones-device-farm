@@ -1,0 +1,48 @@
+---
+- name: Capture whoami output to be used later
+  command: whoami
+  register: username
+
+- name: Create /opt/scripts directory
+  become: yes
+  file:
+    path: /opt/scripts
+    state: directory
+
+- name: Copy files from barebones to /opt/scripts
+  become: yes
+  copy:
+    src: /opt/barebones-device-farm/
+    dest: /opt/scripts
+    owner: "{{ username.stdout_lines[0] }}"
+    group: "{{ username.stdout_lines[0] }}"
+    mode: a+x
+
+- name: wget vhclient
+  get_url:
+    url: https://www.virtualhere.com/sites/default/files/usbclient/vhclientx86_64
+    dest: "/tmp"
+
+- name: Make vhclient executable
+  become: yes
+  copy:
+    src: /tmp/vhclientx86_64
+    dest: /usr/bin
+    remote_src: yes
+    mode: u=+x,g=+x,o=+x
+
+- name: Reread configs using daemon-reload
+  become: yes
+  systemd:
+    daemon_reload: yes
+
+- name: Get groups hats before deciding to run remove command
+  become: yes
+  shell: groups hats | grep sudo
+  register: user_groups
+  failed_when: user_groups.rc == 2
+
+- name: Remove hats from sudoer
+  become: yes
+  shell: gpasswd -d hats sudo
+  when: user_groups.rc == 0

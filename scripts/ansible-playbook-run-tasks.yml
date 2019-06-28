@@ -1,0 +1,6 @@
+---
+- hosts: all
+
+  tasks:
+    - import_tasks: ansible-task-setup-files.yml
+    - import_tasks: ansible-task-run-device-farm.yml
