@@ -48,7 +48,7 @@ A barebones android device farm for controlling android devices via a web browse
    ```
   
 ## Set up auto-start service script
-- Copy service script `/opt/scripts/device-farm.service` to `/etc/systemd/system`.
+- Copy service script `sudo cp device-farm.service /etc/systemd/system` .
 - Run `sudo systemctl daemon-reload`.
 - Enable the service `sudo systemctl enable device-farm.service`.
 - Allow service to start on boot by running the following as root `if [ -f /etc/systemd/system/*.wants/device-farm.service ]; then echo "On"; else echo "Off"; fi`
