@@ -12,7 +12,8 @@ A barebones android device farm for controlling android devices via a web browse
 - Install `kernel-modules-extra` via `sudo dnf install kernel-modules-extra -y` .
 - `hats` user with sudo ([root without password](https://www.digitalocean.com/community/tutorials/how-to-create-a-sudo-user-on-centos-quickstart)) access. 
 ```
-sudo useradd -m hats`
+sudo useradd -m hats
+sudo usermod -aG wheel hats
 echo 'hats ALL=(ALL) NOPASSWD: ALL' | sudo tee -a /etc/sudoers
 ```
 
