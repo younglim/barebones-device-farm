@@ -3,7 +3,7 @@ Description=Device Farm
 After=syslog.target network.target
 
 [Service]
-Type=forking
+Type=simple
 User=hats
 ExecStart=/bin/bash -l -c 'exec "$@"' _ /opt/barebones-device-farm/restartLiveView.sh || true
 ExecStop=/bin/bash -l -c 'exec "$@"' _ /opt/barebones-device-farm/terminateLiveViewSessions.sh
