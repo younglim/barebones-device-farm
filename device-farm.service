@@ -5,8 +5,8 @@ After=syslog.target network.target
 [Service]
 Type=forking
 User=hats
-ExecStart=/bin/bash -l -c 'exec "$@"' _ /opt/scripts/restartLiveView.sh || true
-ExecStop=/bin/bash -l -c 'exec "$@"' _ /opt/scripts/terminateLiveViewSessions.sh
+ExecStart=/bin/bash -l -c 'exec "$@"' _ /opt/barebones-device-farm/restartLiveView.sh || true
+ExecStop=/bin/bash -l -c 'exec "$@"' _ /opt/barebones-device-farm/terminateLiveViewSessions.sh
 SuccessExitStatus=143
 TimeoutSec=infinity
 
