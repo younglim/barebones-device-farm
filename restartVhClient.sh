@@ -4,8 +4,8 @@ echo "$DIR"
 
 vhclientx86_64=$(which vhclientx86_64)
 
-sudo pkill -9 $vhclientx86_64
-wait $(pgrep $vhclientx86_64)
+sudo pkill -9 vhclientx86_64
+wait $(pgrep vhclientx86_64)
 
 sudo $vhclientx86_64 -c $DIR/.vhui -l $DIR/vhserver.log &
 echo "VirtualHere is running at $"
