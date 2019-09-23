@@ -7,6 +7,8 @@ DEVICE_INFO=/tmp/device_info.txt
 DEVICE_INFO_BAK=/tmp/device_info.txt.bak
 
 column -t -s "|" $DIR/device_info.txt > $DEVICE_INFO
+
+rm $DEVICE_LIST
 chmod 755 $DEVICE_INFO
 
 SCRCPY_COUNT_LAST=0
@@ -14,9 +16,9 @@ SCRCPY_COUNT_LAST=0
 while true
 do
 
-	adb devices -l > $DEVICE_LIST
-    chmod 755 $DEVICE_INFO
-	
+        adb devices -l > $DEVICE_LIST
+        chmod 755 $DEVICE_INFO
+
 	line_count=0
 	while read -r line
 	do
