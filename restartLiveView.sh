@@ -20,6 +20,8 @@ vhclientx86_64 -t LIST
 
 DEVICESCOUNT=$(expr $(adb devices | tee >(wc -l) | tail -1) - 2)
 
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+
 while [ $DEVICESCOUNT -le 0 ]
 do
 
