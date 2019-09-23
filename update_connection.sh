@@ -10,7 +10,8 @@ while true
 do
 
 	adb devices -l > /tmp/device_list.txt
-
+        chmod 755 /tmp/device_list.txt
+	
 	line_count=0
 	while read -r line
 	do
