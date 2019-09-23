@@ -2,9 +2,9 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
-DEVICE_LIST=/tmp/DEVICE_LIST.txt
-DEVICE_INFO=/tmp/DEVICE_INFO.txt
-DEVICE_INFO_BAK=/tmp/DEVICE_INFO.txt.bak
+DEVICE_LIST=/tmp/device_list.txt
+DEVICE_INFO=/tmp/device_info.txt
+DEVICE_INFO_BAK=/tmp/device_info.txt.bak
 
 column -t -s "|" $DIR/device_info.txt > $DEVICE_INFO
 chmod 755 $DEVICE_INFO
