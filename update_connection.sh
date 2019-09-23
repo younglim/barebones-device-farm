@@ -2,19 +2,20 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
-DEVICE_LIST=/tmp/device_list.txt
-DEVICE_INFO=/tmp/device_info.txt
-DEVICE_INFO_BAK=/tmp/device_info.txt.bak
+DEVICE_LIST=/tmp/DEVICE_LIST.txt
+DEVICE_INFO=/tmp/DEVICE_INFO.txt
+DEVICE_INFO_BAK=/tmp/DEVICE_INFO.txt.bak
 
-column -t -s "|" $DIR/device_info.txt > DEVICE_INFO
+column -t -s "|" $DIR/device_info.txt > $DEVICE_INFO
+chmod 755 $DEVICE_INFO
 
 SCRCPY_COUNT_LAST=0
 
 while true
 do
 
-	adb devices -l > DEVICE_LIST
-    chmod 755 DEVICE_INFO
+	adb devices -l > $DEVICE_LIST
+    chmod 755 $DEVICE_INFO
 	
 	line_count=0
 	while read -r line
@@ -25,7 +26,7 @@ do
 
 	    is_connected=false
 
-	    for word in $(<DEVICE_LIST)
+	    for word in $(<$DEVICE_LIST)
 		do
 			# echo $id
 		  	if [[ "$3" = "$word" ]]
@@ -48,8 +49,8 @@ do
 			msg+=" is now connected."
 			# awk '{/false/,"true",$6}' table.txt
 			# awk '{print $0, "true"}' table.txt > table2.txt
-			sed -i.bak "${line_count}s/false/true/" DEVICE_INFO
-			rm DEVICE_INFO_BAK
+			sed -i.bak "${line_count}s/false/true/" $DEVICE_INFO
+			rm $DEVICE_INFO_BAK
 			echo $msg
 			$DIR/device_connected_start_xpra.sh $3 $4 $5
 		# Connected previously, not connected now
@@ -57,8 +58,8 @@ do
 		then
 			msg+=" is now disconnected."
 			xpra stop :$5
-			sed -i.bak "${line_count}s/true/false/" DEVICE_INFO
-			rm DEVICE_INFO_BAK
+			sed -i.bak "${line_count}s/true/false/" $DEVICE_INFO
+			rm $DEVICE_INFO_BAK
 			echo $msg
 			# awk '{print $0, "false"}' table.txt > table2.txt
 			echo "Kill xpra for the disconnected device"
@@ -79,7 +80,7 @@ do
 				$DIR/device_connected_start_xpra.sh $3 $4 $5
 			fi
 		fi
-	done < DEVICE_INFO
+	done < $DEVICE_INFO
 
 
 	sleep 30
