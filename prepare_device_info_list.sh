@@ -12,8 +12,6 @@ OUTPUT_FILE=$DIR/device_info.txt
 [ -f $OUTPUT_FILE ] && rm $OUTPUT_FILE
 
 touch $OUTPUT_FILE
-chmod 755 $OUTPUT_FILE
-chmod 755 $DIR
 
 for DEVICE in $DEVICES
 do
