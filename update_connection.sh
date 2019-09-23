@@ -2,7 +2,7 @@
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
-column -t -s "|" $DIR/device_info.txt > /tmp/table.txt
+column -t -s "|" $DIR/device_info.txt > /tmp/device_info.txt
 
 SCRCPY_COUNT_LAST=0
 
