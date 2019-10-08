@@ -44,6 +44,9 @@ done
 
 echo "Number of devices connected: $DEVICESCOUNT"
 
+echo "Start UIAutomatorViewer"
+$DIR/xpra_uiautomatorviewer.sh
+
 echo "Prepare device_info.txt"
 $DIR/prepare_device_info_list.sh
 
